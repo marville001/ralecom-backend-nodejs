@@ -2,13 +2,13 @@ const winston = require("winston");
 const config = require("config");
 require("winston-mongodb");
 require("express-async-errors");
-module.exports = function() {
+module.exports = function () {
   winston.exceptions.handle(
     new winston.transports.Console({ colorize: true, prettyPrint: true }),
     new winston.transports.File({ filename: "uncaughtExceptions.log" })
   );
 
-  process.on("unhandledRejection", ex => {
+  process.on("unhandledRejection", (ex) => {
     throw ex;
   });
   winston.add(
@@ -18,7 +18,7 @@ module.exports = function() {
   winston.add(
     new winston.transports.MongoDB({
       db: config.get("db"),
-      level: "error"
+      level: "error",
     })
   );
 };

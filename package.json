@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

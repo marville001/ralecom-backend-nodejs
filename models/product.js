@@ -5,40 +5,36 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    lowercase: true
+    lowercase: true,
   },
   name: {
     type: String,
     required: true,
-    lowercase: true
+    lowercase: true,
   },
   price: {
     type: Number,
-    required: true
+    required: true,
   },
   description: {
     type: String,
     required: true,
-    lowercase: true
+    lowercase: true,
   },
   imageUrl: {
     type: String,
-    required: true
+    required: true,
   },
   count: {
     type: Number,
     default: 0,
-    min: 0
+    min: 0,
   },
   total: {
     type: Number,
     default: 0,
-    min: 0
+    min: 0,
   },
-  inCart: {
-    type: Boolean,
-    default: false
-  }
 });
 
 const Product = mongoose.model("Product", productSchema);
@@ -48,13 +44,12 @@ function validateProducts(product) {
     name: Joi.string().required(),
     category: Joi.string().required(),
     description: Joi.string().required(),
-    imageUrl: Joi.string().required(),
-    price: Joi.number().required()
+    price: Joi.number().required(),
   };
   return Joi.validate(product, schema);
 }
 
 module.exports = {
   Product,
-  validate: validateProducts
+  validate: validateProducts,
 };
